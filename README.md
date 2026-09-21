@@ -20,11 +20,12 @@ Canonical documents:
 - [Art Bible](docs/ART_BIBLE.md)
 - [Asset Generation Prompt Pack](docs/ASSET_GENERATION_PROMPTS.md)
 - [First Sprite Experiment](docs/FIRST_SPRITE_EXPERIMENT.md)
+- [Telegram Viewport Contract](docs/TELEGRAM_VIEWPORT_CONTRACT.md)
 - [Canonical source manifest](assets/source/references/SOURCE_MANIFEST.json)
 
 ## Engineering direction
 
-Planned runtime: TypeScript + Phaser with a deterministic fixed-tick simulation, Telegram Mini App shell, and a thin Cloudflare backend once the local vertical slice is fun.
+Planned runtime: TypeScript + Phaser with a deterministic fixed-tick simulation, a **responsive** Telegram Mini App shell (portrait, landscape and desktop), and a thin Cloudflare backend once the local vertical slice is fun.
 
 The simulation owns gameplay truth. Rendering owns pixels, audio, shake, particles, and presentation.
 
