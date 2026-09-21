@@ -6,7 +6,7 @@ A tiny Chibi Hood fishing RPG built for Telegram.
 
 ## Current phase
 
-**M0 — FOUNDATION / ART LOCK**
+**M1 — PLAYABLE_0A / GAME-BOY OVERWORLD**
 
 The first production gate is deliberately visual:
 
@@ -26,7 +26,7 @@ Canonical documents:
 
 ## Engineering direction
 
-Planned runtime: TypeScript + Phaser with a deterministic fixed-tick simulation, a **responsive** Telegram Mini App shell (portrait, landscape and desktop), and a thin Cloudflare backend once the local vertical slice is fun.
+Runtime direction: Phaser with deterministic tile/grid simulation inside a **160×144 pixel-native game view**, wrapped by a responsive Telegram Mini App shell. Backend remains deferred until the local loop is fun.
 
 The simulation owns gameplay truth. Rendering owns pixels, audio, shake, particles, and presentation.
 

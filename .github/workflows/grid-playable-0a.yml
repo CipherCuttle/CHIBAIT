@@ -1,0 +1,14 @@
+name: grid-playable-0a
+on:
+  pull_request:
+  push:
+    branches: [feat/playable-0a-grid-v1]
+jobs:
+  simulation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm test
