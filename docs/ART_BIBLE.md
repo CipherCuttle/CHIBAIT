@@ -1,9 +1,13 @@
-# CHIBAIT — ART BIBLE v0.1
+# CHIBAIT — ART BIBLE v0.2
 
 **Status:** canonical visual contract for the first sprite experiment  
 **Canonical protagonist:** the owner's personal Chibi Hood character  
 **Target:** Chibi Hood visual identity re-authored as pixel-native handheld-game art  
-**Primary gameplay resolution:** **240×160 logical pixels**
+**Runtime viewport:** **responsive Telegram Mini App viewport — no single fixed application resolution**
+
+**Art grid:** 16 px environment grid, 32×32 overworld protagonist source sprite, 64×64 encounter/catch source sprite.
+
+See `TELEGRAM_VIEWPORT_CONTRACT.md` for the runtime sizing contract.
 
 ## 0. Objective
 
@@ -210,7 +214,33 @@ Remove or simplify:
 - detailed continents;
 - any texture that competes with face readability.
 
-## 9. Boat + camera
+## 9. Runtime viewport contract
+
+The **application is not 240×160**. Telegram controls the available viewport and can change it at runtime.
+
+The game canvas fills the actual available Mini App viewport. World composition and camera framing adapt to the current aspect ratio.
+
+The 32×32 and 64×64 values in this document are **source-asset grids**, not CSS/display sizes.
+
+Reference validation profiles:
+
+- 360×640 CSS px — narrow portrait phone;
+- 390×844 CSS px — tall portrait phone;
+- 640×360 CSS px — compact landscape phone;
+- 844×390 CSS px — wide landscape phone;
+- 960×600 CSS px — desktop/web compact;
+- 1280×720 CSS px — desktop/web large.
+
+The game must remain playable down to approximately:
+
+- **320×480 CSS px** portrait safe content;
+- **480×320 CSS px** landscape safe content.
+
+Never position critical HUD or touch controls against raw screen edges. Respect Telegram's system and content safe-area insets.
+
+The world background may bleed edge-to-edge. Controls, text and gameplay-critical UI stay inside the safe content rectangle.
+
+## 10. Boat + camera
 
 Starter boat target: **48×32** or **64×32**, chosen by playtest readability.
 
@@ -227,7 +257,7 @@ The boat needs:
 
 Boat direction should be legible almost instantly.
 
-## 10. Animation language
+## 11. Animation language
 
 Engine simulation can run at 60 Hz. Character artwork should use low frame counts and strong key poses.
 
@@ -275,7 +305,7 @@ One deliberate impact/smear frame may break the normal limit.
 
 Cat ears lag the main body by about one animation beat during strong actions.
 
-## 11. Animation invariants
+## 12. Animation invariants
 
 Across ordinary frames:
 
@@ -288,7 +318,7 @@ Across ordinary frames:
 
 If one frame suddenly has a different face, ear length, shoulder width or emblem geometry, reject it.
 
-## 12. Rain and atmosphere
+## 13. Rain and atmosphere
 
 Rain belongs to world/presentation layers, not the character spritesheet.
 
@@ -296,7 +326,7 @@ Use background, midground and foreground streak classes with distinct lengths an
 
 This allows weather variation and prevents animation sheets from baking in unnecessary effects.
 
-## 13. World palette direction
+## 14. World palette direction
 
 The player's silver must separate from the lake.
 
@@ -320,7 +350,7 @@ Atmosphere:
 
 Not horror. Not neon cyberpunk soup. Not bright Pokémon imitation.
 
-## 14. Monster relationship
+## 15. Monster relationship
 
 Creatures share the world grammar without all becoming Chibis.
 
@@ -341,7 +371,7 @@ Recommended sizes:
 - encounter sprite: 32×32 / 48×48
 - catch reveal: 64×64
 
-## 15. Effects budget
+## 16. Effects budget
 
 Exploration stays restrained: rain, wake, tiny water sparkle, subtle chrome shift.
 
@@ -353,7 +383,7 @@ Rare/legendary catches earn increasingly loud effects.
 
 Do not spend legendary presentation budget on ordinary movement.
 
-## 16. UI
+## 17. UI
 
 UI may look pixel-native while retaining modern usability.
 
@@ -366,7 +396,7 @@ Use:
 
 Do not use tiny physical tap targets. Pixel styling is not an excuse for inaccessible controls.
 
-## 17. Asset naming
+## 18. Asset naming
 
 Examples:
 
@@ -388,7 +418,7 @@ fx/water-splash-hook.png
 
 Never use `final2.png`, `good-one.png`, or similar untraceable names.
 
-## 18. AI source hierarchy
+## 19. AI source hierarchy
 
 When generating or revising protagonist assets:
 
@@ -399,7 +429,7 @@ When generating or revising protagonist assets:
 
 Once a pixel master is approved, a new generation may not redesign it merely because the source artwork allows another interpretation.
 
-## 19. AI rejection conditions
+## 20. AI rejection conditions
 
 Reject if:
 
@@ -416,7 +446,7 @@ Reject if:
 - the result reads as generic Pokémon fan art;
 - it only looks good when enlarged.
 
-## 20. First art gate
+## 21. First art gate
 
 No production monster set, boat catalogue, biome set or progression art is authorized until these agree visually:
 
@@ -425,7 +455,7 @@ B. 32×32 overworld protagonist
 C. 4-frame idle  
 D. 7-frame hook-smack  
 E. starter boat  
-F. one 240×160 lake mockup
+F. the approved assets assembled in the real responsive game shell at portrait, landscape and desktop viewport profiles
 
 Final recognition test:
 
