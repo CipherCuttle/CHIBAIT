@@ -81,9 +81,9 @@ Acceptance:
 - one-frame exaggeration is allowed without breaking identity;
 - recovery returns cleanly to the canonical anchor.
 
-### Gate E — game-scale composition
+### Gate E — responsive game-scale composition
 
-Place the approved player and starter boat into a 240×160 lake mockup.
+Place the approved player, starter boat and modular lake assets into the **actual responsive game renderer**, not an image-generation mockup.
 
 Acceptance:
 
@@ -91,7 +91,19 @@ Acceptance:
 - silver separates from water;
 - boat heading is obvious;
 - rain does not destroy sprite readability;
-- scene looks like one authored game rather than composited asset packs.
+- scene looks like one authored game rather than composited asset packs;
+- portrait and landscape reveal different amounts of world without stretching assets;
+- desktop uses keyboard/mouse without displaying touch controls;
+- mobile keeps joystick/action controls inside Telegram content-safe insets.
+
+Required captures:
+
+- 360×640 portrait;
+- 390×844 portrait;
+- 640×360 landscape;
+- 844×390 landscape;
+- 960×600 desktop;
+- 1280×720 desktop.
 
 ## Recognition test
 
