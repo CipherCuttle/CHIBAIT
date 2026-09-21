@@ -1,5 +1,7 @@
 import { GridBoatSim, DIR } from '../sim/GridBoatSim.js';
 import { TileWorld, buildSlopwater, TILE_SIZE, MAP_W, MAP_H } from '../world/slopwater.js';
+import { WindSystem } from '../weather/WindSystem.js';
+import { SlopwaterPresentation } from '../presentation/SlopwaterPresentation.js';
 
 const VIEW_W = 160;
 const VIEW_H = 144;
@@ -9,7 +11,10 @@ export class LakeScene extends Phaser.Scene {
   constructor() {
     super('lake');
     this.accumulator = 0;
-    this.debug = new URLSearchParams(location.search).get('debug') === '1';
+    this.visualTick = 0;
+    this.params = new URLSearchParams(location.search);
+    this.debug = this.params.get('debug') === '1';
+    this.weatherEnabled = this.params.get('weather') !== '0';
   }
 
   preload() {
@@ -26,6 +31,10 @@ export class LakeScene extends Phaser.Scene {
     for (let y=0; y<MAP_H; y++) for (let x=0; x<MAP_W; x++) {
       this.add.image(x*TILE_SIZE, y*TILE_SIZE, 'tiles', map[y][x]).setOrigin(0).setDepth(0);
     }
+
+    this.windSystem = new WindSystem();
+    this.slopwater = new SlopwaterPresentation(this, map, { enabled:this.weatherEnabled });
+    this.weatherState = this.windSystem.sample(0);
 
     const p = this.sim.renderPosition();
     this.boat = this.add.sprite(p.x, p.y + 5, 'boat', 0).setDepth(10);
@@ -59,6 +68,8 @@ export class LakeScene extends Phaser.Scene {
         if (direction) this.sim.requestMove(direction);
       }
       this.sim.step();
+      this.visualTick += 1;
+      this.weatherState = this.windSystem.sample(this.visualTick);
       this.accumulator -= STEP_SECONDS;
     }
     this.syncPresentation();
@@ -72,6 +83,12 @@ export class LakeScene extends Phaser.Scene {
     this.boat.setPosition(p.x, p.y + 5).setFrame(baseFrame);
     this.player.setPosition(p.x, p.y - 7).setFrame(moveFrame);
 
+    this.slopwater.update(this.weatherState, this.windSystem, this.visualTick, {
+      position:p,
+      facing:this.sim.facing,
+      moving:this.sim.moving
+    });
+
     const worldW = MAP_W*TILE_SIZE, worldH = MAP_H*TILE_SIZE;
     const sx = Phaser.Math.Clamp(Math.round(p.x - VIEW_W/2), 0, Math.max(0, worldW - VIEW_W));
     const sy = Phaser.Math.Clamp(Math.round(p.y - VIEW_H/2), 0, Math.max(0, worldH - VIEW_H));
@@ -81,7 +98,8 @@ export class LakeScene extends Phaser.Scene {
       this.debugText.setText([
         `${this.sim.x},${this.sim.y} ${this.sim.facing}`,
         `step ${this.sim.stepCount}`,
-        `tile ${this.worldModel.tileAt(this.sim.x,this.sim.y)}`
+        `tile ${this.worldModel.tileAt(this.sim.x,this.sim.y)}`,
+        `wind ${this.weatherState.strength.toFixed(2)} ${this.weatherEnabled ? 'on' : 'off'}`
       ]);
     }
   }
