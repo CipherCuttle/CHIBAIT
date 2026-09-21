@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no" />
+  <meta name="theme-color" content="#061018" />
+  <title>CHIBAIT — PLAYABLE_0A</title>
+  <style>
+    *{box-sizing:border-box}html,body,#game-root{width:100%;height:100%;margin:0;overflow:hidden;background:#061018}
+    body{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;touch-action:none;overscroll-behavior:none}
+    .badge{position:fixed;z-index:10;left:max(10px,env(safe-area-inset-left));top:max(10px,env(safe-area-inset-top));padding:7px 9px;border:1px solid #35505d;background:#07141dcc;color:#cfe6e6;font-size:11px;letter-spacing:.04em;pointer-events:none;white-space:pre-line}
+    .hint{position:fixed;z-index:10;right:max(10px,env(safe-area-inset-right));top:max(10px,env(safe-area-inset-top));padding:7px 9px;background:#07141da8;color:#90a9af;font-size:10px;pointer-events:none}
+    .desktop-only{display:block}@media(pointer:coarse){.desktop-only{display:none}}
+    canvas{display:block;image-rendering:pixelated;image-rendering:crisp-edges}
+  </style>
+</head>
+<body>
+  <div id="game-root"></div>
+  <div id="debug" class="badge">CHIBAIT / PLAYABLE_0A</div>
+  <div class="hint desktop-only">W/S throttle · A/D steer · mouse aim · R reset</div>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3.90.0/dist/phaser.min.js"></script>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
