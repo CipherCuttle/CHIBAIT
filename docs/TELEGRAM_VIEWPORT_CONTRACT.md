@@ -1,4 +1,4 @@
-# CHIBAIT — TELEGRAM VIEWPORT CONTRACT v0.1
+# CHIBAIT — TELEGRAM VIEWPORT CONTRACT v0.2
 
 ## Principle
 
@@ -24,7 +24,7 @@ In fullscreen, account for both device safe areas and Telegram content-safe area
 
 ## Canvas
 
-The game canvas fills the available viewport.
+The **Telegram shell** fills the available viewport. The core Game Boy-style playfield is a fixed **160×144 internal render surface** displayed at the largest integer scale that fits inside the safe layout.
 
 Recommended presentation architecture:
 
@@ -39,7 +39,7 @@ Telegram viewport
 
 Do not stretch the world to fit a target aspect ratio.
 
-The simulation stays in world units. The camera changes what portion of the lake is visible.
+The simulation stays in tile/world units. The 160×144 camera composition stays stable across desktop and mobile; extra browser space belongs to the shell/HUD rather than revealing substantially more world.
 
 ## Phaser
 
@@ -61,7 +61,7 @@ On resize:
 - reveal more or less world based on aspect;
 - never change physics/simulation because the window changed.
 
-A `FIT`-letterboxed fixed 16:9 game is acceptable only as a fallback, not the primary CHIBAIT layout.
+CHIBAIT does not use a stretched 16:9 game surface. The DOM shell measures the safe area and applies an integer CSS scale to the fixed internal canvas.
 
 ## Supported layout profiles
 
@@ -109,7 +109,7 @@ Support **both portrait and landscape**.
 
 Do not depend on forcing landscape. Telegram can request fullscreen and can lock the **current** orientation, but the game should remain playable before or without that lock.
 
-Landscape may reveal more horizontal lake area. Portrait may reveal more vertical lake area. Neither changes simulation rules.
+Portrait and landscape may arrange shell/HUD/touch controls differently, but the core 160×144 game composition remains stable. Neither orientation changes simulation rules.
 
 ## Fullscreen
 
