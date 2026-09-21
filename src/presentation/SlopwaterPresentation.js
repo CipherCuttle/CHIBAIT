@@ -102,7 +102,7 @@ export class SlopwaterPresentation {
     }
 
     this.foam = scene.add.graphics().setDepth(3);
-    this.wind = scene.add.graphics().setScrollFactor(0).setDepth(50);
+    this.wind = scene.add.graphics().setScrollFactor(0).setDepth(8);
     this.wake = scene.add.graphics().setDepth(9);
   }
 
