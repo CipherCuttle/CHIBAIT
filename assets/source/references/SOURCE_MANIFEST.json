@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "asset_id": "player-chibi-owner-canonical-v0",
+  "role": "canonical_player_identity_reference",
+  "source": {
+    "provenance": "owner-provided in CHIBAIT design conversation",
+    "original_uploaded_name": "00e7cc76c59d59a0ba7cca5e36fe77dc.gif",
+    "declared_extension": "gif",
+    "detected_payload_format": "PNG",
+    "width": 1000,
+    "height": 1000,
+    "color_mode": "RGBA",
+    "frames_detected": 1,
+    "sha256": "a181f76cf088e6fd297de9cace425227269008d86c55c7fbeeed0fcf9e8a5eb6"
+  },
+  "rights_note": "Owner states they have full permission from HoneySlop to use and remix Chibi Hood assets for this project.",
+  "import_status": "canonical-reference-identified-binary-not-yet-vendored",
+  "usage": [
+    "protagonist identity reference",
+    "pixel-art master derivation",
+    "animation identity validation"
+  ],
+  "notes": [
+    "Do not trust the filename extension as the media type; detected payload is PNG.",
+    "Do not automatically downscale this source into a production sprite.",
+    "Once approved, pixel masters become the direct references for animation generation."
+  ]
+}
