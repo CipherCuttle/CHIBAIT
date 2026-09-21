@@ -1,4 +1,4 @@
-# CHIBAIT — ASSET GENERATION PROMPT PACK v0.1
+# CHIBAIT — ASSET GENERATION PROMPT PACK v0.2
 
 This file defines the first controlled image-generation sequence.
 
@@ -15,7 +15,7 @@ Do not ask an image model to invent the character from prose when the canonical 
 3. derive 32×32 overworld sprite from the approved master;
 4. review and approve;
 5. derive animation strips from the approved sprite;
-6. only then make the boat/lake scene.
+6. only then make boat/environment assets and assemble them in code across real Telegram viewport profiles.
 
 Never independently generate every animation frame. Use the approved sprite as the visual anchor and request the complete strip together.
 
@@ -130,23 +130,47 @@ Create the single master pixel interpretation from which later game assets are d
 >
 > Cute, slightly battered, functional, not luxury. Chunky silhouette, restrained palette, hard pixel clusters, dark outline, upper-left/front lighting. No Chibi drawn into the boat. Transparent background. No wake, rain, water, UI or text.
 
-## 7. Prompt F — 240×160 lake art-direction mockup
+## 7. Prompt F — environment asset pack, not a fixed screenshot
 
 **References: approved player + approved boat.**
 
+Do **not** generate the game as one 240×160 or 16:9 background image. The Telegram viewport is responsive and the world must be assembled in code.
+
+Generate modular environment art on a **16 px source grid**:
+
+- seamless dark-water tile(s), including a restrained 4-frame ripple variation;
+- shore edge/corner tiles suitable for autotiling;
+- small reeds, rocks and driftwood props;
+- fish-shadow silhouettes;
+- wake/splash FX as separate transparent sprites;
+- rain streaks as separate transparent FX.
+
 ### Prompt
 
-> Create a **240×160 logical pixel** handheld-game art-direction mockup for CHIBAIT.
+> Create a modular pixel-art environment asset sheet for CHIBAIT, matching the approved protagonist and starter boat.
 >
-> Show the approved silver cat-ear Chibi in the approved tiny boat on a small mysterious lake at night, viewed from a top-down 3/4 RPG camera.
+> Source grid is 16 pixels. Environment pieces must tile or layer cleanly so the lake can be rendered at any Telegram Mini App aspect ratio rather than as one fixed background.
 >
-> Mood: cozy melancholy, midnight rain, dark still water, quiet weirdness. Palette: deep navy, blue-black, desaturated teal, dark violet, muted shoreline olive/brown/purple-gray, sparse cyan water highlights. The silver protagonist must remain one of the brightest readable forms.
+> Mood: cozy melancholy, midnight rain, dark still water, quiet weirdness. Palette: deep navy, blue-black, desaturated teal, dark violet, muted shoreline olive/brown/purple-gray, sparse cyan water highlights. The silver protagonist must remain highly legible over the resulting water.
 >
-> Include a few reeds/rocks/islets and subtle fish shadows beneath the water, but preserve navigable open water. Use restrained layered rain and a small boat wake. Do not make the scene cyberpunk, neon-card UI, horror, or a direct Pokémon map imitation.
+> Use authentic hard pixel clusters and one uniform pixel grid. No antialiasing, gradients, text, logos or baked player/boat.
 >
-> Authentic pixel-native clusters, uniform grid, hard edges, no antialiasing or gradients. No title logo, no dialogue UI, no text.
+> Output distinct reusable assets rather than a composed scene.
 
-## 8. Normalization pass
+## 8. Composition validation is done in code
+
+After the player, boat and environment assets are approved, the real game shell must render the same world at:
+
+- 360×640 portrait;
+- 390×844 portrait;
+- 640×360 landscape;
+- 844×390 landscape;
+- 960×600 desktop;
+- 1280×720 desktop.
+
+Do not use image generation to fake these screenshots. The screenshots must come from the actual renderer.
+
+## 9. Normalization pass
 
 Every candidate must be normalized before approval:
 
@@ -160,7 +184,7 @@ Every candidate must be normalized before approval:
 - inspect at native 1× size and enlarged 4×/8×;
 - reject inconsistent pixel grids.
 
-## 9. Approval gallery
+## 10. Approval gallery
 
 Every protagonist candidate must be shown:
 
@@ -171,6 +195,6 @@ Every protagonist candidate must be shown:
 - on transparent checker;
 - over intended lake water;
 - against a dark shoreline;
-- inside a 240×160 full-scene mockup.
+- inside actual renderer captures at portrait, landscape and desktop validation profiles.
 
 An asset is not approved because it looks good enlarged.
