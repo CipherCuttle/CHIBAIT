@@ -6,7 +6,7 @@ A tiny Chibi Hood fishing RPG built for Telegram.
 
 ## Current phase
 
-**ART DIRECTION / VERTICAL-SLICE PREPRODUCTION**
+**M0 — FOUNDATION / ART LOCK**
 
 The first production gate is deliberately visual:
 
@@ -17,6 +17,7 @@ The first production gate is deliberately visual:
 
 Canonical documents:
 
+- [Roadmap](docs/ROADMAP.md)
 - [Art Bible](docs/ART_BIBLE.md)
 - [Asset Generation Prompt Pack](docs/ASSET_GENERATION_PROMPTS.md)
 - [First Sprite Experiment](docs/FIRST_SPRITE_EXPERIMENT.md)
