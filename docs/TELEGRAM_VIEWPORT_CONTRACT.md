@@ -30,11 +30,12 @@ Recommended presentation architecture:
 
 ```text
 Telegram viewport
-└── canvas: fills viewport
-    ├── world camera: adaptive visible span
-    ├── world FX: may bleed to edges
-    └── HUD/input safe container
-        └── inset by Telegram safe/content-safe areas
+└── responsive shell
+    ├── HUD / touch controls
+    └── 160×144 game surface
+        ├── integer CSS scale (1×, 2×, 3×...)
+        ├── integer-pixel camera
+        └── fixed handheld composition
 ```
 
 Do not stretch the world to fit a target aspect ratio.
@@ -43,25 +44,33 @@ The simulation stays in tile/world units. The 160×144 camera composition stays 
 
 ## Phaser
 
-Prefer a responsive canvas approach:
+Use a fixed internal render surface:
 
 ```ts
-scale: {
-  mode: Phaser.Scale.RESIZE,
-  parent: "game-root"
-},
-pixelArt: true,
-roundPixels: true
+new Phaser.Game({
+  width: 160,
+  height: 144,
+  pixelArt: true,
+  roundPixels: true,
+  scale: {
+    mode: Phaser.Scale.NONE,
+    width: 160,
+    height: 144
+  }
+})
 ```
 
-On resize:
+The surrounding DOM measures the Telegram/browser safe area and applies the **largest integer CSS scale** that fits.
 
-- update canvas/camera viewport;
-- select an integer-ish camera zoom appropriate for current CSS size;
-- reveal more or less world based on aspect;
-- never change physics/simulation because the window changed.
+On viewport/orientation changes:
 
-CHIBAIT does not use a stretched 16:9 game surface. The DOM shell measures the safe area and applies an integer CSS scale to the fixed internal canvas.
+- recalculate only the shell layout and integer display scale;
+- keep Phaser's internal canvas at 160×144;
+- keep camera scroll on integer pixels;
+- do not reveal extra world merely because the desktop window is larger;
+- never change simulation state or timing because the CSS viewport changed.
+
+CHIBAIT does not use a stretched 16:9 game surface.
 
 ## Supported layout profiles
 
@@ -87,21 +96,19 @@ If less space is available, show a compact compatibility state rather than allow
 
 ### Desktop / Telegram Desktop / Web
 
-- WASD / arrows: throttle + steer;
-- mouse: aim;
-- left click: cast / hook / primary action;
-- hold/release mouse: reel interaction where applicable;
+- WASD / arrows: cardinal tile movement;
+- holding a direction chains discrete cell steps;
+- mouse click changes facing in M1 and becomes casting aim/action later;
 - touch HUD hidden.
 
 ### Touch
 
-- left thumb: virtual steering/throttle stick;
-- right thumb: aim/cast/reel interaction;
+- four-direction D-pad: cardinal tile movement;
+- separate action control reserved for cast / hook / reel;
 - action hit areas target at least ~48 CSS px;
-- controls remain inside content-safe insets;
-- visual controls may be translucent but must remain readable over water.
+- controls remain inside content-safe insets.
 
-Use pointer events through one input abstraction so gameplay receives the same `InputIntent` regardless of source.
+Desktop keys and touch controls feed the same logical **direction/action intent**; neither input mode is allowed to bypass tile collision or movement timing.
 
 ## Orientation
 
