@@ -2,7 +2,7 @@
 
 **Status:** LOCKED FOR VERTICAL-SLICE DEVELOPMENT  
 **Product:** cute Chibi Hood fishing RPG for Telegram Mini Apps  
-**Current milestone:** **M0 — FOUNDATION / ART LOCK**
+**Current milestone:** **M1 — PLAYABLE_0A / GAME-BOY OVERWORLD**
 
 This roadmap is intentionally narrow. New ideas do not enter the active milestone unless they are required to pass its acceptance gate.
 
@@ -68,7 +68,7 @@ Freeze the protagonist identity, pixel-art grammar, Telegram viewport rules and 
 - `docs/TELEGRAM_VIEWPORT_CONTRACT.md`
 - canonical source/reference manifest
 - approved protagonist master reference
-- selected 32×32 overworld design candidate
+- selected directional overworld sprite study and normalized game sprite
 
 ## Acceptance gate — `FOUNDATION_LOCKED`
 
@@ -94,101 +94,72 @@ Must be true:
 
 ---
 
-# M1 — PLAYABLE_0A / BOAT MOVEMENT
+# M1 — PLAYABLE_0A / GAME-BOY OVERWORLD
 
 ## Goal
 
-Open a real CHIBAIT game page and move the approved Chibi around a responsive lake on desktop and mobile.
+Open a real CHIBAIT game page that feels like a lost handheld RPG rather than a browser physics sandbox.
+
+## Engine law
+
+Phaser remains the browser/Telegram renderer, but M1 adopts classic tile-overworld semantics inspired by Game Boy RPG engines:
+
+- **160×144 internal game view**;
+- 8×8 visual grammar / 16×16 gameplay cells;
+- four-direction grid movement;
+- destination-tile passability checks;
+- simulation state stored as grid coordinates;
+- rendering interpolates between committed cells;
+- camera scroll stays on integer pixels;
+- browser/Telegram shell scales the game view by integer multiples.
+
+The project may study public Pokémon disassemblies and GB Studio behavior as implementation references, but does not vendor Nintendo code or assets.
 
 ## Build
 
-Minimal repo/runtime skeleton:
+- `GridBoatSim` — deterministic step movement;
+- `TileWorld` — passability and tile semantics;
+- modular 16×16 lake tiles;
+- 32×32 overworld Chibi/boat composite;
+- fixed internal game view with integer CSS scaling;
+- keyboard + touch D-pad feeding the same direction intent;
+- Telegram safe-area/fullscreen shell;
+- optional debug overlay only via `?debug=1`.
 
-```text
-apps/game/
-  src/
-    main.ts
-    game/
-      Game.ts
-      scenes/LakeScene.ts
-      input/
-      sim/
-    telegram/
-      viewport.ts
+### Explicit removal from the rejected smooth-physics experiment
 
-packages/
-  sim/
-  protocol/
-
-assets/
-  pixel/player/
-  pixel/environment/
-
-tests/
-  e2e/
-```
-
-Reuse proven engineering patterns from Apple Inu where appropriate:
-
-- fixed timestep;
-- seeded/testable RNG helpers;
-- logical input intent;
-- simulation/presentation separation;
-- deterministic movement tests.
-
-Do not import combat/zombie-specific design.
-
-## Gameplay
-
-Desktop:
-
-- WASD/arrows = throttle/steer;
-- mouse = aim direction;
-- pointer action abstraction exists but fishing is not implemented yet.
-
-Mobile:
-
-- left virtual stick = throttle/steer;
-- right-side action area placeholder;
-- controls respect Telegram safe/content-safe insets.
-
-Boat movement should have:
+Do **not** use:
 
 - acceleration;
 - water drag;
-- angular acceleration/drag;
-- shoreline collision;
-- readable heading;
-- deterministic stepping.
+- angular velocity;
+- free-rotation steering;
+- circle-island collision;
+- viewport-dependent world reveal.
 
-## Viewport acceptance
+## Gameplay
 
-Required captures:
+Desktop: WASD/arrows move cardinally; holding a key chains discrete water-cell steps. Mouse click may change facing now and becomes casting aim later.
 
-- 360×640 touch;
-- 390×844 touch;
-- 640×360 touch;
-- 844×390 touch;
-- 960×600 desktop;
-- 1280×720 desktop.
+Mobile: four-direction D-pad plus a separate action control reserved for fishing.
 
 ## Acceptance gate — `PLAYABLE_0A`
 
-- real Phaser canvas, not HTML mock art;
-- approved Chibi sprite displayed with nearest-neighbor rendering;
-- no sprite blur at supported scales;
-- desktop movement works;
-- touch movement works;
-- portrait works;
-- landscape works;
-- desktop reveals more world rather than stretching the game;
-- resizing cannot alter simulation outcome for the same input timeline;
-- shoreline collision works;
-- test suite proves deterministic movement.
+- real Phaser game, not an HTML art mock;
+- internal game view is 160×144;
+- CSS/browser size changes only integer display scale/shell;
+- accepted movement advances exactly one 16×16 cell;
+- blocked destination changes facing but not position;
+- same command stream produces the same committed grid state;
+- interpolated render coordinates remain integer pixels;
+- player and boat assets load with no Phaser missing-texture placeholder;
+- portrait, landscape and desktop remain playable;
+- no debug chrome appears unless requested;
+- visual composition reads as a handheld game rather than an open browser canvas.
 
 ### Kill criterion
 
-If the protagonist does not read clearly at actual game scale, fix sprite/camera/contrast before proceeding.
+If integer-scaled 160×144 composition still looks like a generic web prototype, stop before fishing and fix tiles/sprite composition/art direction.
 
 ---
 
@@ -705,4 +676,4 @@ Everything after M2 is a directional roadmap, not permission to prebuild it.
 
 The next implementation after M0 closes is:
 
-> **Responsive Phaser lake + approved 32×32 Chibi + deterministic boat movement + desktop/touch input.**
+> **160×144 integer-scaled Phaser lake + tile/grid boat movement + approved Chibi + desktop/touch cardinal input.**
