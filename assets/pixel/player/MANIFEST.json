@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "asset_id": "player-overworld-v1-48",
+  "source_grid": {"frame_width":48,"frame_height":48,"columns":4,"rows":2},
+  "frame_order": ["down_idle","up_idle","left_idle","right_idle","down_move","up_move","left_move","right_move"],
+  "sha256": "4cd5a961d9e82dcb9f9cba9641f28056b490b10f7200595974815e09f8d05086",
+  "derived_from": "owner-provided overworld direction study",
+  "decision": "48x48 selected for M1 after 32x32 normalization lost too much ear/chrome/Earth readability",
+  "palette_budget": 31,
+  "status": "prototype-production-candidate"
+}
