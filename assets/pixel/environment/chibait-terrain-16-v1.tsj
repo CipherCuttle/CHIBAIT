@@ -1,0 +1,80 @@
+{
+  "columns": 8,
+  "image": "chibait-terrain-16-v1.png",
+  "imageheight": 128,
+  "imagewidth": 128,
+  "margin": 0,
+  "name": "chibait-terrain-16-v1",
+  "spacing": 0,
+  "tilecount": 64,
+  "tileheight": 16,
+  "tilewidth": 16,
+  "tiles": [
+    {
+      "id": 0,
+      "animation": [
+        {
+          "duration": 140,
+          "tileid": 0
+        },
+        {
+          "duration": 140,
+          "tileid": 1
+        },
+        {
+          "duration": 140,
+          "tileid": 2
+        },
+        {
+          "duration": 140,
+          "tileid": 3
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "animation": [
+        {
+          "duration": 170,
+          "tileid": 4
+        },
+        {
+          "duration": 170,
+          "tileid": 5
+        },
+        {
+          "duration": 170,
+          "tileid": 6
+        },
+        {
+          "duration": 170,
+          "tileid": 7
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "animation": [
+        {
+          "duration": 120,
+          "tileid": 8
+        },
+        {
+          "duration": 120,
+          "tileid": 9
+        },
+        {
+          "duration": 120,
+          "tileid": 10
+        },
+        {
+          "duration": 120,
+          "tileid": 11
+        }
+      ]
+    }
+  ],
+  "type": "tileset",
+  "version": "1.10",
+  "tiledversion": "1.11.2"
+}

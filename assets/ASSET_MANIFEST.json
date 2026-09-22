@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "visual_target": {
+    "internal_width": 384,
+    "internal_height": 256,
+    "tile_size": 16,
+    "reference_scale": 4
+  },
+  "assets": [
+    {
+      "path": "assets/fx/fish-shadows-32x16-v1.png",
+      "sha256": "e43d6316c7e2d20abe189585a2499a6356d68076a7ce6d33eb54bf5054cdfd33",
+      "bytes": 227,
+      "width": 64,
+      "height": 16,
+      "mode": "RGBA"
+    },
+    {
+      "path": "assets/fx/water-fx-32-v1.png",
+      "sha256": "5652fc2f3434cfed718ea9f3b01624e85189c555dddbf5e82a80f6e805d653ea",
+      "bytes": 1514,
+      "width": 128,
+      "height": 192,
+      "mode": "RGBA"
+    },
+    {
+      "path": "assets/maps/slopwater-v1.tmj",
+      "sha256": "e57789f47de526ef20403aef77cfa4db97b7bfb9de3d10c9d8d614f60c905d8b",
+      "bytes": 12820
+    },
+    {
+      "path": "assets/pixel/boat/boat-starter-32-v2.png",
+      "sha256": "f0cf59cf274e1b7928c5fde01b3d5ddbe9a2f4e9e03ae0c2b920b735c8772789",
+      "bytes": 547,
+      "width": 128,
+      "height": 32,
+      "mode": "RGBA"
+    },
+    {
+      "path": "assets/pixel/environment/chibait-terrain-16-v1.png",
+      "sha256": "d68a651919cda927ec075dec0ceedf48cd96d92e918c3cb928fe0ceb6dd864e4",
+      "bytes": 2127,
+      "width": 128,
+      "height": 128,
+      "mode": "RGBA"
+    },
+    {
+      "path": "assets/pixel/environment/chibait-terrain-16-v1.tsj",
+      "sha256": "13cb555bc03458188134ad476af586b17c500d780609b60f81cf42bc8939044b",
+      "bytes": 1322
+    },
+    {
+      "path": "assets/pixel/foliage/bushes-32x24-v1.png",
+      "sha256": "c7883ed1c3223ef4c2e354628772ff3f215c34f3a23576d1f828c52a8ec9325e",
+      "bytes": 614,
+      "width": 128,
+      "height": 24,
+      "mode": "RGBA"
+    },
+    {
+      "path": "assets/pixel/foliage/trees-32x48-v1.png",
+      "sha256": "0524306ba7b5d97855433233b9527bffa9fe644bef39ea6cb070ba2d00fa9915",
+      "bytes": 834,
+      "width": 64,
+      "height": 48,
+      "mode": "RGBA"
+    },
+    {
+      "path": "assets/pixel/props/props-32-v1.png",
+      "sha256": "044141d797350b0fc3c52125f7a6addaefacd03ff1de6c3bf4f9d68369f44f01",
+      "bytes": 1219,
+      "width": 256,
+      "height": 32,
+      "mode": "RGBA"
+    }
+  ]
+}
