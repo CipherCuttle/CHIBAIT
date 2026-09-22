@@ -1769,8 +1769,8 @@
         17,
         17,
         17,
-        0,
-        0,
+        17,
+        17,
         0,
         0,
         0,
@@ -1831,7 +1831,7 @@
         0,
         0,
         17,
-        0,
+        17,
         0,
         0,
         0,
@@ -1857,8 +1857,6 @@
         17,
         17,
         17,
-        0,
-        0,
         0,
         0,
         0,
@@ -1882,6 +1880,8 @@
         0,
         0,
         0,
+        17,
+        17,
         0,
         0,
         17,
@@ -1921,12 +1921,12 @@
         17,
         17,
         17,
-        0,
-        0,
-        0,
-        0,
-        0,
+        17,
+        17,
+        17,
+        17,
         0,
+        17,
         0,
         0,
         0,
@@ -2022,8 +2022,8 @@
         0,
         0,
         0,
-        0,
-        0,
+        17,
+        17,
         0,
         0,
         0,
@@ -2052,8 +2052,7 @@
         0,
         0,
         0,
-        0,
-        0,
+        17,
         0,
         0,
         0,
@@ -2075,6 +2074,7 @@
         0,
         0,
         0,
+        17,
         0,
         0,
         17,
@@ -2131,7 +2131,7 @@
         0,
         0,
         0,
-        0,
+        17,
         0,
         17,
         17,
@@ -2228,7 +2228,7 @@
         0,
         0,
         0,
-        0,
+        17,
         17,
         0,
         0,
@@ -2355,8 +2355,8 @@
           "id": 1,
           "name": "tree_0",
           "type": "tree",
-          "x": 32,
-          "y": 32,
+          "x": 48,
+          "y": 16,
           "width": 0,
           "height": 0,
           "properties": [
@@ -2371,8 +2371,8 @@
           "id": 2,
           "name": "tree_1",
           "type": "tree",
-          "x": 80,
-          "y": 32,
+          "x": 112,
+          "y": 16,
           "width": 0,
           "height": 0,
           "properties": [
@@ -2388,7 +2388,7 @@
           "name": "tree_2",
           "type": "tree",
           "x": 464,
-          "y": 48,
+          "y": 16,
           "width": 0,
           "height": 0,
           "properties": [
@@ -2403,8 +2403,8 @@
           "id": 4,
           "name": "tree_3",
           "type": "tree",
-          "x": 48,
-          "y": 336,
+          "x": 64,
+          "y": 352,
           "width": 0,
           "height": 0,
           "properties": [
@@ -2419,8 +2419,8 @@
           "id": 5,
           "name": "tree_4",
           "type": "tree",
-          "x": 448,
-          "y": 320,
+          "x": 432,
+          "y": 352,
           "width": 0,
           "height": 0,
           "properties": [
@@ -2499,8 +2499,8 @@
           "id": 10,
           "name": "bush_0",
           "type": "bush",
-          "x": 64,
-          "y": 64,
+          "x": 80,
+          "y": 16,
           "width": 0,
           "height": 0,
           "properties": [
@@ -2515,8 +2515,8 @@
           "id": 11,
           "name": "bush_1",
           "type": "bush",
-          "x": 160,
-          "y": 80,
+          "x": 128,
+          "y": 96,
           "width": 0,
           "height": 0,
           "properties": [
@@ -2531,8 +2531,8 @@
           "id": 12,
           "name": "bush_2",
           "type": "bush",
-          "x": 432,
-          "y": 80,
+          "x": 400,
+          "y": 96,
           "width": 0,
           "height": 0,
           "properties": [
@@ -2547,8 +2547,8 @@
           "id": 13,
           "name": "bush_3",
           "type": "bush",
-          "x": 80,
-          "y": 304,
+          "x": 96,
+          "y": 352,
           "width": 0,
           "height": 0,
           "properties": [
@@ -2563,8 +2563,8 @@
           "id": 14,
           "name": "bush_4",
           "type": "bush",
-          "x": 416,
-          "y": 304,
+          "x": 384,
+          "y": 352,
           "width": 0,
           "height": 0,
           "properties": [
@@ -2604,6 +2604,11 @@
               "name": "variant",
               "type": "int",
               "value": 0
+            },
+            {
+              "name": "solid",
+              "type": "bool",
+              "value": true
             }
           ]
         },
@@ -2620,6 +2625,11 @@
               "name": "variant",
               "type": "int",
               "value": 2
+            },
+            {
+              "name": "solid",
+              "type": "bool",
+              "value": true
             }
           ]
         },
@@ -2636,6 +2646,11 @@
               "name": "variant",
               "type": "int",
               "value": 1
+            },
+            {
+              "name": "solid",
+              "type": "bool",
+              "value": true
             }
           ]
         },
@@ -2652,6 +2667,11 @@
               "name": "variant",
               "type": "int",
               "value": 0
+            },
+            {
+              "name": "solid",
+              "type": "bool",
+              "value": true
             }
           ]
         },
@@ -2668,6 +2688,11 @@
               "name": "variant",
               "type": "int",
               "value": 1
+            },
+            {
+              "name": "solid",
+              "type": "bool",
+              "value": true
             }
           ]
         },
@@ -2684,6 +2709,11 @@
               "name": "variant",
               "type": "int",
               "value": 0
+            },
+            {
+              "name": "solid",
+              "type": "bool",
+              "value": true
             }
           ]
         },
@@ -2700,6 +2730,11 @@
               "name": "variant",
               "type": "int",
               "value": 1
+            },
+            {
+              "name": "solid",
+              "type": "bool",
+              "value": true
             }
           ]
         },
@@ -2716,6 +2751,11 @@
               "name": "variant",
               "type": "int",
               "value": 0
+            },
+            {
+              "name": "solid",
+              "type": "bool",
+              "value": true
             }
           ]
         },
@@ -2732,6 +2772,11 @@
               "name": "variant",
               "type": "int",
               "value": 1
+            },
+            {
+              "name": "solid",
+              "type": "bool",
+              "value": true
             }
           ]
         },
@@ -2748,6 +2793,11 @@
               "name": "variant",
               "type": "int",
               "value": 0
+            },
+            {
+              "name": "solid",
+              "type": "bool",
+              "value": true
             }
           ]
         },
@@ -2764,6 +2814,11 @@
               "name": "variant",
               "type": "int",
               "value": 1
+            },
+            {
+              "name": "solid",
+              "type": "bool",
+              "value": true
             }
           ]
         },
@@ -2780,6 +2835,11 @@
               "name": "variant",
               "type": "int",
               "value": 0
+            },
+            {
+              "name": "solid",
+              "type": "bool",
+              "value": true
             }
           ]
         },
@@ -2892,6 +2952,11 @@
               "name": "frame",
               "type": "int",
               "value": 0
+            },
+            {
+              "name": "solid",
+              "type": "bool",
+              "value": true
             }
           ]
         },
@@ -2908,6 +2973,11 @@
               "name": "frame",
               "type": "int",
               "value": 0
+            },
+            {
+              "name": "solid",
+              "type": "bool",
+              "value": true
             }
           ]
         },
@@ -2924,6 +2994,11 @@
               "name": "frame",
               "type": "int",
               "value": 0
+            },
+            {
+              "name": "solid",
+              "type": "bool",
+              "value": true
             }
           ]
         },
@@ -2940,6 +3015,11 @@
               "name": "frame",
               "type": "int",
               "value": 1
+            },
+            {
+              "name": "solid",
+              "type": "bool",
+              "value": true
             }
           ]
         },
@@ -2956,6 +3036,11 @@
               "name": "frame",
               "type": "int",
               "value": 2
+            },
+            {
+              "name": "solid",
+              "type": "bool",
+              "value": true
             }
           ]
         },

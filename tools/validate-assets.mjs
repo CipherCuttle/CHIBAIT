@@ -28,11 +28,12 @@ for(const name of ['Water','Shore','Collision']){
   const l=layers[name];if(l?.type!=='tilelayer'||l.data.length!==n)errors.push(name+' needs exactly '+n+' cells');
 }
 if(layers.Entities?.type!=='objectgroup')errors.push('Entities must be an objectgroup');
+const solids=new Set((layers.Entities?.objects??[]).filter(o=>o.properties?.some(p=>p.name==='solid'&&p.value===true)).map(o=>Math.floor(o.y/16)*m.width+Math.floor(o.x/16)));
 if(layers.Water?.data.length===n&&layers.Shore?.data.length===n&&layers.Collision?.data.length===n){
   for(let i=0;i<n;i++){
     const w=layers.Water.data[i],s=layers.Shore.data[i],c=layers.Collision.data[i];
     if(![1,5,9].includes(w))errors.push('invalid water tile at index '+i);
-    if(s<0||s>64||c!==(s?17:0))errors.push('collision/shore mismatch at index '+i);
+    if(s<0||s>64||c!==(s||solids.has(i)?17:0))errors.push('collision/shore mismatch at index '+i);
   }
 }
 const allowed=new Set(['tree','bush','rock','reeds','lily','prop','fish_shadow','spawn']);
@@ -41,6 +42,7 @@ for(const o of objects){
   if(!allowed.has(o.type))errors.push('unknown object type '+o.type);
   if(!Number.isInteger(o.x)||!Number.isInteger(o.y)||o.x<0||o.y<0||o.x>=m.width*16||o.y>=m.height*16)errors.push('invalid entity position '+o.name);
 }
+for(const o of objects){if(['tree','bush'].includes(o.type)&&layers.Shore?.data[Math.floor(o.y/16)*m.width+Math.floor(o.x/16)]===0)errors.push(o.name+' floating on water');}
 const spawns=objects.filter(o=>o.type==='spawn');
 if(spawns.length!==1)errors.push('exactly one spawn required');
 else if(layers.Collision?.data.length===n&&layers.Collision.data[Math.floor(spawns[0].y/16)*m.width+Math.floor(spawns[0].x/16)]!==0)errors.push('spawn blocked');
